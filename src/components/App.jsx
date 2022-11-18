@@ -9,7 +9,7 @@ import Notiflix from 'notiflix';
 import toast, { Toaster } from 'react-hot-toast';
 
 import { useSelector, useDispatch } from 'react-redux';
-import { increment, decrement } from 'redux/store';
+import { increment, decrement } from '../redux/filterSlice';
 
 export default function App() {
   const notify = () =>
