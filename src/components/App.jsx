@@ -7,9 +7,9 @@ import Form from './Form/Form';
 // import { nanoid } from 'nanoid';
 // import Notiflix from 'notiflix';
 import toast, { Toaster } from 'react-hot-toast';
-import { getFilter } from 'redux/filterSlice';
+// import { getFilter } from 'redux/filterSlice';
 
-import { useSelector, useDispatch } from 'react-redux';
+// import { useSelector, useDispatch } from 'react-redux';
 
 export default function App() {
   const notify = () =>
