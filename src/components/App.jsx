@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+// import { useState, useEffect } from 'react';
 import Contacts from './Contacts/Contacts';
 import Section from './Section/Section';
 import Filter from './Filter/Filter';
@@ -7,6 +7,7 @@ import Form from './Form/Form';
 // import { nanoid } from 'nanoid';
 // import Notiflix from 'notiflix';
 import toast, { Toaster } from 'react-hot-toast';
+
 // import { getFilter } from 'redux/filterSlice';
 
 // import { useSelector, useDispatch } from 'react-redux';
@@ -17,9 +18,9 @@ export default function App() {
       position: 'top-right',
     });
 
-  const [contacts, setContacts] = useState(() => {
-    return JSON.parse(window.localStorage.getItem('contacts' ?? ''));
-  });
+  // const [contacts, setContacts] = useState(() => {
+  //   return JSON.parse(window.localStorage.getItem('contacts' ?? ''));
+  // });
 
   // const [filter, setFilter] = useState('');
 
@@ -54,9 +55,9 @@ export default function App() {
   //   );
   // };
 
-  useEffect(() => {
-    localStorage.setItem('contacts', JSON.stringify(contacts));
-  }, [contacts]);
+  // useEffect(() => {
+  //   localStorage.setItem('contacts', JSON.stringify(contacts));
+  // }, [contacts]);
 
   return (
     <div className={css.container}>
