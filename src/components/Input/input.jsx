@@ -18,7 +18,6 @@ const InputName = ({ name, onChange }) => {
     </div>
   );
 };
-
 const InputNumber = ({ number, onChange }) => {
   return (
     <div className={css.input}>

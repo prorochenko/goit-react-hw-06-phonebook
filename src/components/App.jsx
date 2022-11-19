@@ -4,12 +4,12 @@ import Section from './Section/Section';
 import Filter from './Filter/Filter';
 import css from './CommonStyle.module.scss';
 import Form from './Form/Form';
-import { nanoid } from 'nanoid';
-import Notiflix from 'notiflix';
+// import { nanoid } from 'nanoid';
+// import Notiflix from 'notiflix';
 import toast, { Toaster } from 'react-hot-toast';
+import { getFilter } from 'redux/filterSlice';
 
 import { useSelector, useDispatch } from 'react-redux';
-import { increment, decrement } from '../redux/filterSlice';
 
 export default function App() {
   const notify = () =>
@@ -21,59 +21,52 @@ export default function App() {
     return JSON.parse(window.localStorage.getItem('contacts' ?? ''));
   });
 
-  const [filter, setFilter] = useState('');
+  // const [filter, setFilter] = useState('');
 
-  const deleteContact = contactId => {
-    setContacts(prevState =>
-      prevState.filter(contact => contact.id !== contactId)
-    );
-  };
+  // const deleteContact = contactId => {
+  //   setContacts(prevState =>
+  //     prevState.filter(contact => contact.id !== contactId)
+  //   );
+  // };
 
-  const formSubmitHandler = ({ name, number }) => {
-    const contact = {
-      id: nanoid(),
-      name,
-      number,
-    };
+  // const formSubmitHandler = ({ name, number }) => {
+  //   const contact = {
+  //     id: nanoid(),
+  //     name,
+  //     number,
+  //   };
 
-    if (contacts.some(contact => contact.name === name)) {
-      Notiflix.Notify.failure(`${name} is already in contacts`);
-      return;
-    }
+  //   if (contacts.some(contact => contact.name === name)) {
+  //     Notiflix.Notify.failure(`${name} is already in contacts`);
+  //     return;
+  //   }
 
-    setContacts(prevState => [contact, ...prevState]);
-  };
+  //   setContacts(prevState => [contact, ...prevState]);
+  // };
 
-  const changeFilter = e => {
-    setFilter(e.currentTarget.value);
-  };
+  // const changeFilter = e => {
+  //   setFilter(e.currentTarget.value);
+  // };
 
-  const getVisibleContacts = () => {
-    const normalizedFilter = filter.toLowerCase();
-    return contacts.filter(contact =>
-      contact.name.toLowerCase().includes(normalizedFilter)
-    );
-  };
+  // const getVisibleContacts = () => {
+  //   return contacts.filter(contact =>
+  //     contact.name.toLowerCase().includes(getFilter)
+  //   );
+  // };
 
   useEffect(() => {
     localStorage.setItem('contacts', JSON.stringify(contacts));
   }, [contacts]);
 
-  const dispatch = useDispatch();
-  const value = useSelector(state => state.myValue);
-
   return (
     <div className={css.container}>
       <Section title="Phonebook">
-        <Form onSubmit={formSubmitHandler} />
+        <Form />
       </Section>
       <Section title="Contacts">
-        <Filter filter={filter} onChange={changeFilter} />
-        <Contacts list={getVisibleContacts()} onDeleteContact={deleteContact} />
+        <Filter />
+        <Contacts />
       </Section>
-      {value}
-      <button onClick={() => dispatch(increment(100))}>increment</button>
-      <button onClick={() => dispatch(decrement(100))}>decrement</button>
       <button type="button" onClick={notify}>
         press me
       </button>

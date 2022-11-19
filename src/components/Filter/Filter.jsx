@@ -1,12 +1,20 @@
 import css from './Filter.module.scss';
+import { useDispatch } from 'react-redux';
+import { getFilter, setFilter } from 'redux/filterSlice';
 
-const Filter = ({ filter, onChange }) => {
+const Filter = () => {
+  const dispatch = useDispatch();
+
+  const handlerFilterList = e => {
+    const inputValue = e.currentTarget.value.toLocaleLowerCase();
+    dispatch(setFilter(inputValue));
+  };
   return (
     <label>
       <input
         className={css.input}
-        value={filter}
-        onChange={onChange}
+        // value={getFilter}
+        onChange={handlerFilterList}
         placeholder="Enter name"
         type="text"
       />

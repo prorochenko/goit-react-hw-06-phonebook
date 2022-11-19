@@ -1,31 +1,19 @@
 import { createSlice } from '@reduxjs/toolkit';
 
-export const myValueSlice = createSlice({
-  name: 'myValue',
-  initialState: 100,
+const initialFilterState = '';
+
+const filterSlice = createSlice({
+  name: 'filter',
+  initialState: initialFilterState,
   reducers: {
-    increment(state, action) {
-      return state + action.payload;
-    },
-    decrement(state, action) {
-      return state - action.payload;
+    setFilter(state, action) {
+      return action.payload;
     },
   },
 });
 
-export const { increment, decrement } = myValueSlice.actions;
+export const { setFilter } = filterSlice.actions;
+export const filterReducer = filterSlice.reducer;
 
-export const myItemsSlice = createSlice({
-  name: 'myValue',
-  initialState: 100,
-  reducers: {
-    add(state, action) {
-      state.push(action.payload);
-    },
-    remove(state, action) {
-      return state.filter(item => item.id !== action.payload);
-    },
-  },
-});
-
-export const { add, remove } = myItemsSlice.actions;
+// Selectors
+export const getFilter = state => state.filter;
